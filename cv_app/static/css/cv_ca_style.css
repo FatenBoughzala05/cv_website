@@ -1,0 +1,214 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    color: #333;
+    font-size: 0.9em;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.cv-container {
+    width:auto; /* Standard letter size width */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: left; /* Aligned left as per the new image */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Lighter border for header */
+}
+
+header h1 {
+    margin: 0;
+    color: #000; /* Black for name */
+    font-size: 2em; /* Slightly larger name */
+    font-weight: 500; /* Medium weight */
+    letter-spacing: 0.5px;
+}
+
+.contact-info {
+    font-size: 0.8em;
+    margin-top: 10px;
+    line-height: 1.4;
+    display: grid; /* Use grid for contact info layout */
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 5px 15px; /* Gap between items */
+}
+
+.contact-info p {
+    margin: 0; /* Remove default paragraph margin */
+    display: flex;
+    align-items: center;
+}
+
+.contact-info a {
+    color: #0056b3; /* Link color */
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.icon {
+    color: #0056b3; /* Icon color */
+    margin-right: 8px;
+    width: 1em; /* Ensure consistent icon sizing */
+    text-align: center;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #000; /* Section titles are black */
+    font-size: 1.1em; /* Smaller section titles */
+    border-bottom: 1px solid #333; /* Darker, solid border */
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: 700; /* Bold section titles */
+    text-transform: uppercase; /* Uppercase for section titles */
+    letter-spacing: 0.5px;
+}
+
+/* Professional Summary */
+.summary p {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+/* Technical Skills */
+.technical-skills .skills-list {
+    list-style: none; /* Remove default bullets */
+    padding-left: 0;
+    margin: 0;
+}
+
+.technical-skills .skills-list li {
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 15px; /* Space for custom bullet */
+    font-size: 0.9em;
+}
+
+.technical-skills .skills-list li::before {
+    content: '•'; /* Custom bullet point */
+    color: #333; /* Darker bullet color */
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.technical-skills .skills-list li strong {
+    font-weight: 500; /* Slightly lighter bold for categories */
+}
+
+
+/* Experience and Education Items */
+.experience-item, .education-item {
+    margin-bottom: 15px;
+}
+
+.experience-item:last-of-type, .education-item:last-of-type {
+    margin-bottom: 0; /* No margin on the last item in a section */
+}
+
+.job-title, .degree {
+    margin: 0;
+    font-size: 1em; /* Job title size */
+    color: #333;
+    font-weight: 700; /* Bold for job/degree titles */
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.company, .institution {
+    margin: 2px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.company strong {
+    font-weight: 500;
+}
+
+.date {
+    font-weight: normal;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.experience-item p:not(.company) {
+    margin: 5px 0 0 0;
+    font-size: 0.9em;
+}
+
+
+/* Certifications */
+.certifications ul {
+    list-style: disc; /* Default disc bullets */
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+.certifications ul li {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    position: static; /* Remove absolute positioning from inherited li style */
+    padding-left: 0; /* Remove padding from inherited li style */
+}
+.certifications ul li::before {
+    content: none; /* Remove custom bullet from inherited li style */
+}
+
+/* Languages and Interests */
+.languages-and-interests {
+    margin-top: 20px; /* Space above this section */
+}
+
+.languages-and-interests p {
+    margin: 0;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+#Link {
+    color: #333333; /* Link color */
+    text-decoration: none;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cv-container {
+        width: 100%;
+        padding: 20px;
+    }
+    .contact-info {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1em;
+    }
+    .job-title, .degree {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .date {
+        margin-top: 5px;
+    }
+}

@@ -1,0 +1,45 @@
+/* Action buttons styles */
+#action-buttons {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+#action-buttons button {
+    padding: 10px 15px;
+    background-color: #705c49;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+select.language_buttons{
+   position: absolute !important;
+    top: 20px !important;
+    right: 220px !important; 
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+  padding: 10px 15px;
+    background-color: #705c49;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+#action-buttons button:hover {
+    background-color: #5a4a3d;
+}
+  @media print{
+  #action-buttons{
+    display: none;
+  }
+  select.language_buttons{
+    display: none;
+  }
+}

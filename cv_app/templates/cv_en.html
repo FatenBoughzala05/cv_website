@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Faten Boughzala - CV</title>
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+         <link rel="stylesheet" href="{% static 'css/cv_en_style.css' %}?v=1.0">
+         <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+    </head>
+    
+    <body>
+<select class="language_buttons" onchange="if(this.value) window.location.href=this.value">
+    <option value="{% url 'cv_view' 'tn' %}" >Tunisian</option>
+    <option value="{% url 'cv_view' 'en' %}"selected>English</option>
+    <option value="{% url 'cv_view' 'fr' %}">French</option>
+    <option value="{% url 'cv_view' 'ca' %}">Canadian English</option>
+    <option value="{% url 'cv_view' 'ar' %}">Arabic</option>
+    <option value="{% url 'cv_view' 'es' %}">Spanish</option>
+</select>
+  <div id="action-buttons">
+        <button onclick="printCV()">Print</button>
+        <button onclick="downloadCV()">Download PDF</button>
+    </div>
+    <div class="container">
+        <div class="header">
+            <h1 class="name">FATEN BOUGHZALA</h1>
+            
+            <div class="contact-info">
+               <span>                       
+                        <i class="fa-solid fa-envelope" title="Email"></i>
+                        <p><a id="Link" href="mailto:faten05boughzala@gmail.com">faten05boughzala@gmail.com</a></p>
+                    </span>
+                    <span>                        
+                        <i class="fa-solid fa-phone" title="Phone"></i>
+                       <p><a id="Link" href="tel:+21620289540">20 289 540 </a> / <a id="Link" href="tel:+21621008244">21 008 244</a></p>
+                    </span>
+                    <span>
+                        <i class="fa-solid fa-house" title="Home"></i>
+                      <p>Adresse: Rue Ramallah -Sousse</p>
+                    </span>
+                    
+                    <span>
+                        <i class="fa-brands fa-linkedin" title="LinkedIn"></i>
+                        <p> <a href="https://www.linkedin.com/in/faten-boughzala-307ab7269/">Faten Boughzala </a></p>
+                    </span>
+                    <span>
+                    <i class="fa-brands fa-github" title="GitHub"></i>
+                    <p><a href="https://github.com/FatenBoughzala05"> FatenBoughzala05</a></p>
+                    </span>
+                    <span>
+                        <p>Portfolio: <a id="Link" href="https://portfolio-nu-taupe-t9jzg4v78j.vercel.app">https://portfolio-nu-taupe-t9jzg4v78j.vercel.app</a></p>
+                    </span>
+                
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="left-column">
+                <div class="section">
+                    <h2 class="section-title">SUMMARY</h2>
+                    <p>Innovative and organized Web and Mobile Developer, with solid technical expertise. Passionate about creating elegant digital solutions and solving complex problems.</p>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">LANGUAGES</h2>
+                    <ul>
+                        {% for lang in languages %}
+                            <li>{{ lang.language_name }} : {{ lang.level }}</li>
+                        {% endfor %}
+                       
+                    </ul>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">SOFT SKILLS</h2>
+                    <ul>
+                        <li>Autonomy</li>
+                        <li>Adaptability</li>
+                        <li>Team Spirit</li>
+                        <li>Diplomacy</li>
+                        <li>Problem Solving</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h2 class="section-title">CERTIFICATES</h2>
+                    <ul>
+                        {% for cert in certificates %}
+                            <li>
+                                {% if cert.url %}
+                                    <a id="Link" href="{{ cert.url }}" target="_blank">{{ cert.name }}</a> : <strong>{{ cert.issuer }}</strong>
+                                {% else %}
+                                    {{ cert.name }} : {{ cert.issuer }}
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="section">
+                    <h2 class="section-title">EXPERIENCE</h2>
+
+                    {% for exp in experiences %}    
+                        <div class="experience-item">
+                            <div class="item-header">
+                                <h3>{{ exp.job_title }}</h3>
+                                <span class="date">{{ exp.date_range }}{% if exp.second_date_range %} &amp; {{ exp.second_date_range }}{% endif %}</span>
+                            </div>
+                            <p class="company">{{ exp.company }}</p>
+                            <ul>
+                                   {% for desc in exp.descriptions.all %}
+                                        <li>{{ desc.description|linebreaks }}</li>
+                                    {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">ACADEMIC BACKGROUND</h2>
+                    {% for edu in educations %}
+                        <div class="education-item">
+                            <div class="item-header">
+                                <h3>{{edu.degree_name}}</h3>
+                                <span class="date">{{ edu.year }}</span>
+                            </div>
+                            <p class="institution">{{edu.institution}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">TECHNICAL SKILLS</h2>
+                    <ul>
+                        {% for cat in skill_categories_translated %}
+                            <li><strong>{{ cat.title }}:</strong> {% for skill in cat.skills %}{{ skill.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+                        {% endfor %}
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

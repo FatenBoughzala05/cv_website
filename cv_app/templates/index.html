@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Faten Boughzala</title>
+    <link rel="stylesheet" href="{% static 'css/CVTNstyle.css' %}?v=1">
+    <link rel="stylesheet" href="{% static 'css/480pxstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
+</head>
+<body>
+    <select class="language_buttons" onchange="if(this.value) window.location.href=this.value">
+    <option value="{% url 'cv_view' 'tn' %}" selected>Tunisian</option>
+    <option value="{% url 'cv_view' 'en' %}">English</option>
+    <option value="{% url 'cv_view' 'fr' %}">French</option>
+    <option value="{% url 'cv_view' 'ca' %}">Canadian English</option>
+    <option value="{% url 'cv_view' 'ar' %}">Arabic</option>
+    <option value="{% url 'cv_view' 'es' %}">Spanish</option>
+</select>
+    <div id="action-buttons">
+        <button onclick="printCV()">Print</button>
+        <button onclick="downloadCV()">Download PDF</button>
+    </div>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-picture-container">
+                <div class="profile-picture" style="background-image: url('{% static 'CV-Image/pro image.png' %}');"></div>
+            </div>
+           <div id="profile-info">
+            <section class="profile-section">
+                <h2>PROFIL PROFESSIONNEL</h2>
+                <p>Développeuse Web et Mobile innovante et organisée, forte d'une expertise technique solide. Passionnée par la création de solutions numériques élégantes et la résolution de problèmes complexes.</p>
+            </section>
+            <section class="languages-section">
+                <h2>Langues</h2>
+                <ul>
+                     {% for lang in languages %}
+                    <li>{{ lang.language_name }} : {{ lang.level }}</li>
+                      {% endfor %}
+                    
+                </ul>
+            </section>
+            <section class="skills-section">
+                <h2>Compétences</h2>
+                <ul>
+                   
+                    <li>Autonomie</li>
+                    <li>Capacité d'adaptation</li>
+                    <li>Esprit d'équipe</li>
+                    <li>Sens de la diplomatie</li>
+                    <li>Résolution de problèmes</li>
+                </ul>
+            </section>
+            <section class="interests-section">
+                <h2>Centres d'intérêt</h2>
+                <ul>
+                    <li>Lecture</li>
+                    <li>Musique</li>
+                    <li>Cinéma</li>
+                </ul>
+            </section>
+              </div>
+        </aside>
+        <main class="main-content">
+            <header class="header-section">
+                <h1>FATEN BOUGHZALA</h1>
+                <div class="contact-info">
+                    <span>                       
+                        <i class="fa-solid fa-envelope" title="Email"></i>
+                        <p><a id="Link" href="mailto:faten05boughzala@gmail.com">faten05boughzala@gmail.com</a></p>
+                    </span>
+                    <span>                        
+                        <i class="fa-solid fa-phone" title="Phone"></i>
+                       <p><a id="Link" href="tel:+21620289540">20 289 540 </a> / <a id="Link" href="tel:+21621008244">21 008 244</a></p>
+                    </span>
+                    <span>
+                        <i class="fa-solid fa-house" title="Home"></i>
+                      <p>Adresse: Rue Ramallah -Sousse</p>
+                    </span>
+                    <br>
+                    <span>
+                        <i class="fa-brands fa-linkedin" title="LinkedIn"></i>
+                        <p> <a href="https://www.linkedin.com/in/faten-boughzala-307ab7269/">Faten Boughzala </a></p>
+                    </span>
+                    <span>
+                    <i class="fa-brands fa-github" title="GitHub"></i>
+                    <p><a href="https://github.com/FatenBoughzala05"> FatenBoughzala05</a></p>
+                    </span>
+                    <span>
+                        <p>Portfolio: <a id="Link" href="https://portfolio-nu-taupe-t9jzg4v78j.vercel.app">https://portfolio-nu-taupe-t9jzg4v78j.vercel.app</a></p>
+                    </span>
+                </div>
+            </header>
+            <section class="experience-section">
+                <h2>Expérience Professionnelle</h2>
+                <div class="experience-container">
+                    <div class="timeline-container"></div>
+                    <div class="experience-timeline-line"></div>
+                    <div class="experience-content">
+                        {% for exp in experiences %}
+                                <h3>{{ exp.job_title }}</h3>
+                                 <p>{{ exp.company }} <span class="date">{{ exp.date_range }}{% if exp.second_date_range %} &amp; {{ exp.second_date_range }}{% endif %}</span></p>
+                                <ul>
+                                    {% for desc in exp.descriptions.all %}
+                                        <li>{{ desc.description|linebreaks }}</li>
+                                    {% endfor %}
+                                </ul>
+                        {% endfor %}
+                        </div>
+                </div>
+            </section>
+             <section class="academic-section">
+                <h2>Parcours Académique</h2>
+                <div class="academic-container">
+                        <div class="timeline-container2"></div>
+                        <div class="academic-timeline-line"></div>
+                        <div class="academic-content">
+                            {% for edu in educations %}
+                                    <h4>{{ edu.degree_name }} <span class="date">{{ edu.year }}</span></h4>
+                                    <p>{{ edu.institution }}</p>
+                                
+                            {% endfor %}   
+                        </div>
+                    </div>
+            </section>
+            <section class="technical-skills-section">
+                <h2>COMPÉTENCES TECHNIQUE</h2>
+                <ul>
+                    {% for cat in skill_categories_translated %}
+                        <li><strong><u>{{ cat.title }}:</u></strong> {% for skill in cat.skills %}{{ skill.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+                    {% endfor %}
+                </ul>
+                
+            </section>
+            <section class="certificates-section">
+                <h2>CERTIFICATS</h2>
+                <ul>
+                {% for cert in certificates %}
+                    <li>
+                        {% if cert.url %}
+                            <a id="Link" href="{{ cert.url }}" target="_blank">{{ cert.name }}</a> : {{ cert.issuer }}
+                        {% else %}
+                            {{ cert.name }} : {{ cert.issuer }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                    
+                </ul>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+   <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+
+/* Variables for easier color changes */
+:root {
+    --bg-color-light: #fffaf5; /* Light beige background */
+    --sidebar-color: #bc978f;  /* Brown sidebar */
+    --text-color-dark: #333333;
+    --text-color-light: #555555;
+    --accent-color: #79574D;   /* Darker brown for details/bullets */
+    --name-font: 'Playfair Display', serif;
+    --body-font: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: var(--body-font);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    color: var(--text-color-dark);
+    font-size: 0.9em;
+    background-color: #fffaf5; /* A very light grey for the outer page */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.cv-container {
+    width: auto; /* Standard letter size width */
+    height: 11in; /* Standard letter size height */
+    background-color: var(--bg-color-light);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 30% 70%; /* Sidebar and main content */
+    position: relative; /* For positioning absolute elements */
+}
+
+
+
+
+.cv-container::before { /* Top-left dots */
+    width: 10px; height: 10px; top: 20px; left: 15px;
+    box-shadow: 15px 0 0 -2px var(--sidebar-color),
+                0 15px 0 -1px var(--sidebar-color),
+                15px 15px 0 -3px var(--sidebar-color),
+                30px 5px 0 -4px var(--sidebar-color);
+    opacity: 0.5;
+}
+
+.cv-container::after { /* Bottom-right dots */
+    width: 8px; height: 8px; bottom: 30px; right: 20px;
+    box-shadow: -15px 0 0 -2px var(--sidebar-color),
+                0 -15px 0 -1px var(--sidebar-color),
+                -15px -15px 0 -3px var(--sidebar-color),
+                -30px -5px 0 -4px var(--sidebar-color);
+    opacity: 0.4;
+}
+
+#Link{
+    color: white;
+    text-decoration: none;
+}
+/* --- Left Sidebar --- */
+.left-sidebar {
+    background-color: var(--sidebar-color);
+    color: #fffaf5;
+    padding: 40px 20px 20px 40px; /* Adjust padding to match image */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1; /* Ensure it's above decorative elements */
+    border-radius: 20px;
+    margin: 50px 12px;
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h3 {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 5px;
+    color: white;
+}
+
+.sidebar-section h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: white;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.85em;
+    line-height: 1.2;
+}
+
+.contact-item .icon {
+    font-size: 1.1em;
+    margin-right: 12px;
+    color: white;
+    width: 20px; /* Fixed width for alignment */
+    text-align: center;
+}
+
+.contact-item p {
+    margin: 0;
+    word-break: break-all; /* Ensure long links break */
+}
+
+.contact-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+.sidebar-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85em;
+}
+
+.sidebar-section ul li {
+    margin-bottom: 5px;
+}
+
+.sidebar-section ul li strong {
+    font-weight: 500;
+}
+
+
+/* --- Main Content --- */
+.main-content {
+    padding: 40px 40px 20px 40px; /* Padding for main content */
+    position: relative;
+    box-sizing: border-box;
+}
+
+.main-header {
+    text-align: right; /* Aligned right as per template */
+    margin-bottom: 50px; /* Space after header */
+    position: relative;
+    z-index: 2; /* Bring text above blob */
+}
+
+.main-header h1 {
+    font-family: var(--name-font);
+    font-size: 3.5em; /* Large script font */
+    color: var(--accent-color);
+    margin: 0 0 5px 0;
+    line-height: 1;
+    font-weight: 400; /* Regular weight for script font */
+}
+
+.main-header p {
+    font-family: var(--body-font);
+    font-size: 1.0em;
+    color: var(--text-color-light);
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+/* Decorative Blob behind name */
+
+
+.section-content {
+    margin-bottom: 30px;
+}
+
+.section-content h2 {
+    font-family: var(--body-font);
+    font-size: 0.9em; /* Smaller section titles */
+    color: var(--text-color-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 5px 15px; /* Padding to create the "tab" effect */
+    background-color: var(--bg-color-light); /* Background of the "tab" */
+    display: inline-block; /* Make it fit content */
+    margin-left: -20px; /* Overlap with content area */
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(0,0,0,0.1); /* Subtle border for the tab */
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+}
+.section-content h2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--text-color-dark);
+    top: 50%;
+    left: 100%; /* Start after the h2 */
+    transform: translateY(-50%);
+    z-index: 0;
+    width: 200vw; /* Extend far enough to cover the rest of the line */
+}
+
+
+.section-content p, .section-content ul {
+    font-size: 0.85em;
+    margin-top: 10px;
+    padding-left: 0;
+    line-height: 1.5;
+}
+
+/* Experience Timeline */
+.professional-experience h2 {
+    margin-bottom: 30px; /* Adjust spacing for timeline */
+}
+.timeline {
+    position: relative;
+    margin-left: 20px; /* Indent timeline */
+    padding-left: 20px;
+    border-left: 1px solid var(--accent-color); /* Vertical line */
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.timeline-point {
+    position: absolute;
+    left: -24px; /* Position circle on the line */
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    border: 2px solid var(--bg-color-light); /* Inner circle white */
+    box-shadow: 0 0 0 2px var(--accent-color); /* Outer ring */
+}
+
+.timeline-content {
+    padding-bottom: 10px;
+}
+
+.timeline-content h3 {
+    font-size: 1em;
+    margin: 0;
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.timeline-content .date {
+    font-size: 0.8em;
+    color: var(--text-color-light);
+    margin: 2px 0 5px 0;
+    display: block;
+}
+
+.timeline-content .company {
+    font-size: 0.85em;
+    color: var(--text-color-dark);
+    margin-bottom: 5px;
+}
+
+.timeline-content ul {
+    list-style: disc; /* Use disc for bullet points */
+    margin-left: 20px;
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+.timeline-content ul li {
+    margin-bottom: 3px;
+    position: static; /* Override default li style */
+    padding-left: 0;
+}
+
+
+/* Education */
+.education-item {
+    margin-bottom: 15px;
+}
+.education-item h3 {
+    font-size: 0.95em;
+    margin: 0;
+    color: var(--text-color-dark);
+    font-weight: 500;
+}
+.education-item .date {
+    font-size: 0.8em;
+    color: var(--text-color-light);
+    margin: 2px 0;
+    display: block;
+}
+.education-item .institution {
+    font-size: 0.85em;
+    color: var(--text-color-dark);
+}
+
+/* Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for skills */
+    gap: 5px 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.85em;
+}
+
+.skills-grid li {
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 3px;
+}
+.skills-grid li::before {
+    content: '•';
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    .cv-container {
+        grid-template-columns: 1fr; /* Stack sidebar and main content */
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+    }
+    .left-sidebar {
+        padding: 30px 15px;
+    }
+    .main-content {
+        padding: 30px 20px;
+    }
+    .main-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .main-header .decorative-blob {
+        top: -10px;
+        right: 50%;
+        transform: translateX(50%) rotate(10deg);
+    }
+    .section-content h2 {
+        margin-left: 0;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .section-content h2::before {
+        display: none; /* Hide the extending line */
+    }
+    .skills-grid {
+        grid-template-columns: 1fr; /* Single column for skills */
+    }
+}

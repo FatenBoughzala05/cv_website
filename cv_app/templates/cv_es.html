@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faten Boughzala - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/cv_es_style.css' %}?v=1.0">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+   
+</head>
+<body>
+     <select class="language_buttons" onchange="if(this.value) window.location.href=this.value">
+    <option value="{% url 'cv_view' 'tn' %}" >Tunisian</option>
+    <option value="{% url 'cv_view' 'en' %}">English</option>
+    <option value="{% url 'cv_view' 'fr' %}">French</option>
+    <option value="{% url 'cv_view' 'ca' %}">Canadian English</option>
+    <option value="{% url 'cv_view' 'ar' %}">Arabic</option>
+    <option value="{% url 'cv_view' 'es' %}"selected>Spanish</option>
+</select>
+  <div id="action-buttons">
+        <button onclick="printCV()">Print</button>
+        <button onclick="downloadCV()">Download PDF</button>
+    </div>
+    <div class="cv-container">
+        <aside class="left-sidebar">
+            <div class="sidebar-section">
+                <h3>CONTACTO</h3>
+                <div class="contact-item">
+                    <i class="fas fa-envelope icon"></i>
+                    <p>faten05boughzala@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt icon"></i>
+                    <p>+216 20289540</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt icon"></i>
+                    <p>Rue Ramallah - Sousse</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin-in icon"></i>
+                    <p><a href="https://www.linkedin.com/in/faten-boughzala-3b7ab726b/" target="_blank">linkedin.com/in/faten...</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe icon"></i>
+                    <p><a href="https://portfolio-nu-taupe-t9ijz4v78j.vercel.app/" target="_blank">Portfolio</a></p>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>IDIOMAS</h3>
+                <ul>
+                    {% for lang in languages %}
+                        <li>{{ lang.language_name }} : {{ lang.level }}</li>
+                    {% endfor %}
+                   
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>CERTIFICACIONES</h3>
+                <ul>
+                     {% for cert in certificates %}
+                    <li>
+                        {% if cert.url %}
+                            <a id="Link" href="{{ cert.url }}" target="_blank">{{ cert.name }}</a> : ( {{ cert.issuer }} )
+                        {% else %}
+                            {{ cert.name }} : {{ cert.issuer }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+                    
+                </ul>
+            </div>
+            
+             <div class="sidebar-section">
+                <h3>CENTROS DE INTERÉS</h3>
+                <ul>
+                    <li>Lectura</li>
+                    <li>Música</li>
+                    <li>Cine</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Boughzala Faten</h1>
+                <p>DESARROLLADORA WEB Y MÓVIL</p>
+                
+            </header>
+
+            <section class="section-content">
+                <h2>PERFIL PROFESIONAL</h2>
+                <p>Desarrolladora Web y Móvil innovadora y organizada, con una sólida experiencia técnica. Apasionada por la creación de soluciones digitales elegantes y la resolución de problemas complejos. Comprometida a mantenerse actualizada con las tendencias y ofrecer soluciones escalables. Experta en la resolución de problemas y el trabajo en entornos ágiles y colaborativos.</p>
+            </section>
+
+            <section class="section-content">
+                <h2>EXPERIENCIA PROFESIONAL</h2>
+                <div class="timeline">
+                    {% for exp in experiences %}
+                        <div class="timeline-item">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-content">
+                                            <h3>{{ exp.job_title }}</h3>
+                                            <p class="date">{{ exp.date_range }}{% if exp.second_date_range %} &amp; {{ exp.second_date_range }}{% endif %}</p>
+                                            <p class="company">{{ exp.company }}</p>
+                                            <ul>
+                                                {% for desc in exp.descriptions.all %}
+                                                <li>{{ desc.description|linebreaks }}</li>
+                                                {% endfor %}
+                                            </ul>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                   
+                    
+            </section>
+            
+            <section class="section-content">
+                <h2>FORMACIÓN</h2>
+                {% for edu in educations %}
+                    <div class="education-item">
+                        <h3>{{edu.degree_name}}</h3>
+                        <p class="date">{{ edu.year }}</p>
+                        <p class="institution">{{edu.institution}}</p>
+                    </div>
+                {% endfor %}
+            </section>
+            <section class="section-content">
+                <h2>COMPETENCIAS</h2>
+                <ul>
+                    {% for cat in skill_categories_translated %}
+                        <li><strong><u>{{ cat.title }}:</u></strong> {% for skill in cat.skills %}{{ skill.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+                    {% endfor %}
+                    
+                </ul>
+            </section>
+           
+                     
+                   
+            
+        </main>
+    </div>
+ <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Analytics Dashboard</h1>
+
+<div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 300px; background: #f0f8ff; padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px #ccc;">
+    <h2>Website Visits</h2>
+    <canvas id="visitsChart" width="400" height="200"></canvas>
+  </div>
+  <div style="flex: 1; min-width: 300px; background: #fff0f5; padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px #ccc;">
+    <h2>Print Clicks</h2>
+    <canvas id="printChart" width="400" height="200"></canvas>
+  </div>
+  <div style="flex: 1; min-width: 300px; background: #f5fff0; padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px #ccc;">
+    <h2>Download Clicks</h2>
+    <canvas id="downloadChart" width="400" height="200"></canvas>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  async function fetchData(url) {
+    const response = await fetch(url);
+    return response.json();
+  }
+
+  function createChart(ctx, label, data, bgColor) {
+    return new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: data.labels,
+        datasets: [{
+          label: label,
+          data: data.counts,
+          backgroundColor: bgColor,
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const visitsData = await fetchData('{% url "admin:analytics_visits_data" %}');
+    const printData = await fetchData('{% url "admin:analytics_print_data" %}');
+    const downloadData = await fetchData('{% url "admin:analytics_download_data" %}');
+
+    createChart(document.getElementById('visitsChart').getContext('2d'), 'Visits', visitsData, 'rgba(54, 162, 235, 0.7)');
+    createChart(document.getElementById('printChart').getContext('2d'), 'Print Clicks', printData, 'rgba(255, 99, 132, 0.7)');
+    createChart(document.getElementById('downloadChart').getContext('2d'), 'Download Clicks', downloadData, 'rgba(75, 192, 192, 0.7)');
+  });
+</script>
+
+<hr>
+
+{% if app_list %}
+  <div class="app-list">
+    {% for app in app_list %}
+      <div class="app">
+        <h2>{{ app.name }}</h2>
+        <ul class="model-list">
+          {% for model in app.models %}
+            <li>
+              <a href="{{ model.admin_url }}">{{ model.name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No apps available.</p>
+{% endif %}
+
+{% endblock %}

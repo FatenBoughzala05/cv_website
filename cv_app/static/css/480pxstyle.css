@@ -1,0 +1,8 @@
+@media (max-width: 480px) {
+    /* Masquer la ligne et les points dans .experience-content sous 480px */
+    .experience-content h3::before,
+    .experience-content h3:first-child::after ,
+    .academic-content h4::before {
+        display: none !important;
+    }
+}

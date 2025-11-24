@@ -1,0 +1,180 @@
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    /* width: 8.5in; Standard letter size width */
+   /* height: 11in; /* Standard letter size height */
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name {
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.contact-info {
+    font-size: 0.8em;
+    margin-top: 10px;
+    line-height: 1.5;
+    color:black;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    align-items: center;
+     justify-content: center;                        /* center the grid as a whole */
+    gap: 12px 24px;
+    text-align: center;
+  /* makes the grid container itself shrink and be centered */
+  width: max-content;
+  margin-inline: auto;
+    
+}
+#Link{
+    text-decoration: none;
+    color: black;
+}
+
+   .contact-info span {
+    display: flex;
+    align-items: center; /* vertically align icon + text */
+    gap: 2px;    
+    margin: 0 -50px;        /* spacing between icon and text */
+    }
+    .contact-info i {
+    font-size: 12pt;     /* adjust icon size if needed */
+    color: #916264;      /* same color as your screenshot */
+    }
+.contact-info a {
+    color: black;
+    text-decoration: none;
+}
+.contact-info p {
+  margin: 0;            /* kills default paragraph spacing */
+}
+.content {
+    display: flex;
+    flex-grow: 1;
+}
+
+.left-column {
+    width: 35%;
+    background-color: #f4e9e8;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    margin-left: 12px;
+    margin-bottom: 50px;
+}
+
+.right-column {
+    width: 65%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #333;
+    margin-bottom: 10px;
+}
+
+.left-column .section-title {
+    color: #444;
+}
+
+.experience-item,
+.education-item {
+    margin-bottom: 20px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+.item-header h3 {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.item-header .date {
+    font-size: 0.9em;
+    color: #777;
+    white-space: nowrap;
+}
+
+.company,
+.institution {
+    font-style: italic;
+    color: #555;
+    margin: 0;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+}
+
+ul li {
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+.right-column ul li {
+    font-size: 0.95em;
+}
+
+.left-column ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.left-column ul li {
+    position: relative;
+    padding-left: 15px;
+}
+
+.left-column ul li::before {
+    content: "•";
+    color: #333;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.section ul li strong {
+    font-weight: bold;
+}

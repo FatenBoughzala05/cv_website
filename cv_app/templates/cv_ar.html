@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فاتن بوغزالة - السيرة الذاتية</title>
+  <link rel="stylesheet" href="{% static 'css/cv_ar_style.css' %}?v=1.0">
+  <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+</head>
+<body>
+ <select class="language_buttons" onchange="if(this.value) window.location.href=this.value">
+    <option value="{% url 'cv_view' 'tn' %}" >Tunisian</option>
+    <option value="{% url 'cv_view' 'en' %}">English</option>
+    <option value="{% url 'cv_view' 'fr' %}">French</option>
+    <option value="{% url 'cv_view' 'ca' %}">Canadian English</option>
+    <option value="{% url 'cv_view' 'ar' %}"selected>عربي</option>
+    <option value="{% url 'cv_view' 'es' %}">Spanish</option>
+</select>
+    <div id="action-buttons">
+        <button onclick="printCV()">Print</button>
+        <button onclick="downloadCV()">Download PDF</button>
+    </div>
+  <div class="cv-container">
+        <!-- Header Section -->
+        <header class="header">
+        <div class="profile-section">
+            <h1 class="name">فاتن بوغزالة</h1>
+            </div>
+            <div class="profile-info">
+            <h2 class="title">الملخص الشخصي</h2>
+            <p class="description">
+                مطورة ويب وتطبيقات جوال متكيرة ومطمحة تتميز
+                بخبرة تقنية قوية، شغوفة بإنشاء حلول رقمية آمنة
+                وحل المشكلات المعقدة.
+            </p>
+            </div>
+        
+        
+        
+        </header>
+        <div class="cv_body">
+            <!-- Main Content -->
+            <main class="main-content">
+                    <!-- Contact Information -->
+                <div class="contact-section">
+                        <h2 class="sidebar-title contactInfo">معلومات الاتصال</h2>
+                        <div class="contact-item">
+                            <div class="contact-icon phone-icon"></div>
+                             <span class="contact-text ltr-number">+216 20289540</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon email-icon"></div>
+                            <span class="contact-text">faten05boughzala@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon location-icon"></div>
+                            <span class="contact-text">شارع الرقة - سوسة تونس</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon linkedin-icon"></div>
+                            <span class="contact-text">Faten Boughzala</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon github-icon"></div>
+                            <span class="contact-text">FatenBoughzala05</span>
+                        </div>
+                        <div class="portfolio-link">
+                        <a class="portfolio-link" href="https://portfolio-nu-taupe-19.vercel.app">
+                            <strong>
+                             <small>Portfolio: https://portfolio-nu-taupe-19.vercel.app</small>
+                            </strong>
+                        </a>
+                        </div>
+                </div>
+                <!-- Academic Path -->
+                    <section class="sidebar-section">
+                        <h2 class="sidebar-title">المسار الأكاديمي</h2>
+                       {% for edu in educations %} 
+                            <div class="education-item">
+                            <div class="year">{{ edu.year }}</div>
+                            <h3 class="degree">{{edu.degree_name}}</h3>
+                            <p class="institution">{{edu.institution}}</p>
+                            </div>
+                        {% endfor %}
+
+                    </section>
+            
+                    <!-- Certificates -->
+                    <section class="sidebar-section">
+                        <h2 class="sidebar-title">الشهادات</h2>
+                        <ul class="certificates-list">
+                            {% for cert in certificates %}
+                             <li>
+                                    {% if cert.url %}
+                                        <a id="Link" href="{{ cert.url }}" target="_blank">{{ cert.name }}</a> : {{ cert.issuer }}
+                                    {% else %}
+                                        {{ cert.name }} : {{ cert.issuer }}
+                                    {% endif %}
+                             </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+
+                    <!-- Languages -->
+                    <section class="sidebar-section">
+                        <h2 class="sidebar-title">اللغات</h2>
+                        {% for lang in languages %}        
+                            <div class="language-item">
+                            <span class="language">{{ lang.language_name }} : {{ lang.level }}</span>
+                            </div>
+                        {% endfor %}
+                        
+                    </section>
+                    <!-- Personal Skills -->
+                        <section class="sidebar-section">
+                            <h2 class="sidebar-title">المهارات الشخصية</h2>
+                            <ul class="personal-skills-list">
+                            <li>القدرة على الكتابة</li>
+                            <li>روح الفريق</li>
+                            <li>الحس الإبداعي</li>
+                            <li>حل المشكلات</li>
+                            </ul>
+                        </section>
+            
+            </main>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+            
+                <!-- Experience Section -->
+                    <section class="section">
+                        <h2 class="section-title">الخبرة المهنية</h2>
+                        {% for exp in experiences %}
+                            <div class="experience-item">
+                                <div class="date-range">{{ exp.date_range }}</div>
+                                {% if exp.second_date_range %}
+                                <div class="date-range">{{ exp.second_date_range }}</div>
+                                {% endif %}
+                                <h3 class="job-title">{{ exp.job_title }}</h3>
+                                <p class="company">{{ exp.company }}</p>
+                                <ul class="job-description">
+                                    {% for desc in exp.descriptions.all %}
+                                        <li>{{ desc.description|linebreaks }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    </section>
+
+                    <!-- Skills Section -->
+                    <section class="section">
+                        <h2 class="section-title">المهارات التقنية</h2>
+                        <ul class="skills-list">
+                        {% for cat in skill_categories_translated %}
+                            <li>{{ cat.title }}: {% for skill in cat.skills %}{{ skill.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+                        {% endfor %}
+                        
+                        </ul>
+                    </section>
+
+            
+            </aside>
+        </div>
+  </div>
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
