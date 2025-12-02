@@ -10,21 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="{% static 'css/cv_fr_style.css' %}?v=1">
+      <link rel="stylesheet" href="{% static 'css/cv_fr_style.css' %}?v=2">
       <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
    
 </head>
-<body>
-       <select class="language_buttons" onchange="if(this.value) window.location.href=this.value">
-    <option value="{% url 'cv_view' 'tn' %}" >Tunisian</option>
-    <option value="{% url 'cv_view' 'en' %}">English</option>
-    <option value="{% url 'cv_view' 'fr' %}"selected>French</option>
-    <option value="{% url 'cv_view' 'ca' %}">Canadian English</option>
-    <option value="{% url 'cv_view' 'ar' %}">Arabic</option>
-    <option value="{% url 'cv_view' 'es' %}">Spanish</option>
-</select>
-    
-    <div class="cv-container">
+    <body>
+        
+        
+        <div class="cv-container">
+        {% include 'button.html' %}
 
         <header>
             <h1>FATEN BOUGHZALA</h1>

@@ -10,17 +10,11 @@
     <link rel="stylesheet" href="{% static 'css/cv_ca_style.css' %}?v=1.0">
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
 </head>
-<body>
-        <select class="language_buttons" onchange="if(this.value) window.location.href=this.value">
-    <option value="{% url 'cv_view' 'tn' %}" >Tunisian</option>
-    <option value="{% url 'cv_view' 'en' %}">English</option>
-    <option value="{% url 'cv_view' 'fr' %}">French</option>
-    <option value="{% url 'cv_view' 'ca' %}"selected>Canadian English</option>
-    <option value="{% url 'cv_view' 'ar' %}">Arabic</option>
-    <option value="{% url 'cv_view' 'es' %}">Spanish</option>
-</select>
-    
-    <div class="cv-container">
+    <body>
+        
+        
+        <div class="cv-container">
+        {% include 'button.html' %}
         <header>
             <h1>Faten Boughzala</h1>
             <div class="contact-info">

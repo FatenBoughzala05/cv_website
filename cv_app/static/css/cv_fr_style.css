@@ -25,13 +25,13 @@ body {
 header {
     text-align: center;
     margin-bottom: 30px;
-    border-bottom: 2px solid #0056b3;
+    border-bottom: 2px solid #e4d4c4;
     padding-bottom: 15px;
 }
 
 header h1 {
     margin: 0;
-    color: #0056b3;
+    color: #443c33;
     font-size: 2.2em;
     font-weight: 700;
     letter-spacing: 1px;
@@ -61,7 +61,7 @@ header .contact-info span {
     background-size: contain;
     margin-right: 5px;
     vertical-align: middle;
-    color: blue;;
+    color: #443c33;;
 }
 .contact-info a{
     color: black;
@@ -80,9 +80,9 @@ section {
 }
 
 h2 {
-    color: #0056b3;
+    color: #443c33;
     font-size: 1.3em;
-    border-bottom: 1px solid #0056b3;
+    border-bottom: 1px solid #e4d4c4;
     padding-bottom: 5px;
     margin-bottom: 15px;
     font-weight: 500;
@@ -111,7 +111,7 @@ ul li::before {
     text-decoration: none;
 }
 ul li a {
-    color: #0056b3;
+    color: #6d6153;
     text-decoration: none;
 }
 .experience-item, .education-item {
@@ -164,7 +164,7 @@ ul li a {
 
 .skills-grid li::before {
     content: '•';
-    color: #0056b3;
+    color: #e4d4c4;
     position: absolute;
     left: 0;
     top: 0;
@@ -184,7 +184,7 @@ ul li a {
 }
 
 .languages-section h2, .competences-section h2, .hobbies-section h2 {
-    border-bottom: 1px solid #0056b3;
+    border-bottom: 1px solid #e4d4c4;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
@@ -198,7 +198,7 @@ ul li a {
 
 .language-item strong {
     font-weight: 500;
-    color: #0056b3;
+    color: #6d6153;
 }
 
 .hobbies-section ul {
@@ -210,7 +210,7 @@ ul li a {
 
 .hobbies-section li::before {
     content: '•';
-    color: #0056b3;
+    color: #6d6153;
     position: absolute;
     left: 0;
     font-weight: bold;

@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Faten Boughzala</title>
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+   
+</head>
+<body>
+    <nav >
+               <!-- another pdf button-->
+        <button class="download-btn">
+            <i class="fas fa-file-pdf"></i>
+            Download As PDF</button>
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <button class="language-btn" onclick="toggleLanguageDropdown()">
+                <i class="fas fa-globe"></i>
+                <span  data-i18n="buttons.changeLanguage" id="languageSpan">Change Language</span>
+            </button>
+            <div class="language-dropdown" id="languageDropdown">
+                <button  class="language-option" onclick="window.location.href='{% url 'cv_view' 'tn' %}';" data-lang="tn">
+                   🇹🇳 <span>Tunisian</span>
+                </button>
+                <button class="language-option" onclick="window.location.href='{% url 'cv_view' 'en' %}';" data-lang="en">
+                    🇺🇸 <span>English</span>
+                </button>
+                <button class="language-option" onclick="window.location.href='{% url 'cv_view' 'fr' %}';" data-lang="fr">
+                    🇫🇷 <span>Français</span>
+                </button>
+                  <button class="language-option" onclick="window.location.href='{% url 'cv_view' 'ca' %}';" data-lang="ca">
+                    🇨🇦 <span>Canadian English</span>
+                  </button>
+                <button class="language-option" onclick="window.location.href='{% url 'cv_view' 'es' %}';" data-lang="es">
+                    🇪🇸 <span>Español</span>
+                </button>
+                <button class="language-option" onclick="window.location.href='{% url 'cv_view' 'ar' %}';" data-lang="ar">
+                    🇸🇦 <span>العربية</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+        <script src="{% static 'js/button.js' %}"></script>
+</body>
+</html>

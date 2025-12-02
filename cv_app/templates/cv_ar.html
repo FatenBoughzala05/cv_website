@@ -8,15 +8,9 @@
   <link rel="stylesheet" href="{% static 'css/cv_ar_style.css' %}?v=1.0">
   <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
 </head>
-<body>
- <select class="language_buttons" onchange="if(this.value) window.location.href=this.value">
-    <option value="{% url 'cv_view' 'tn' %}" >Tunisian</option>
-    <option value="{% url 'cv_view' 'en' %}">English</option>
-    <option value="{% url 'cv_view' 'fr' %}">French</option>
-    <option value="{% url 'cv_view' 'ca' %}">Canadian English</option>
-    <option value="{% url 'cv_view' 'ar' %}"selected>عربي</option>
-    <option value="{% url 'cv_view' 'es' %}">Spanish</option>
-</select>
+    <body>
+        {% include 'button.html' %}
+ 
 
   <div class="cv-container">
         <!-- Header Section -->

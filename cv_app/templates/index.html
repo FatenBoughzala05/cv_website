@@ -15,15 +15,7 @@
    
 </head>
 <body>
-    <select class="language_buttons" onchange="if(this.value) window.location.href=this.value">
-    <option value="{% url 'cv_view' 'tn' %}" selected>Tunisian</option>
-    <option value="{% url 'cv_view' 'en' %}">English</option>
-    <option value="{% url 'cv_view' 'fr' %}">French</option>
-    <option value="{% url 'cv_view' 'ca' %}">Canadian English</option>
-    <option value="{% url 'cv_view' 'ar' %}">Arabic</option>
-    <option value="{% url 'cv_view' 'es' %}">Spanish</option>
-</select>
-    
+    {% include 'button.html' %}
     <div class="container">
         <aside class="sidebar">
             <div class="profile-picture-container">
