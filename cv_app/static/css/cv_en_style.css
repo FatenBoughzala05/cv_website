@@ -178,3 +178,21 @@ ul li {
 .section ul li strong {
     font-weight: bold;
 }
+@media print {
+.contact-info {
+    font-size: 0.6em;
+    margin-top: 8px;
+    line-height: 1.5;
+    color:black;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    align-items: center;
+     justify-content: center;                        /* center the grid as a whole */
+    gap: 9px 20px;
+    text-align: center;
+  /* makes the grid container itself shrink and be centered */
+  width: max-content;
+  margin-inline: auto;
+    
+}
+}
