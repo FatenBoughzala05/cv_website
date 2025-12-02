@@ -407,7 +407,26 @@ body {
   }
 }
 @media print {
-@page {
-  size: A4;
-  margin: 0;
-}}
+    body{
+        font-size: 10px;
+    }
+    .cv-container{
+      display: grid;
+          grid-template-areas:
+        "header header"
+        "main sidebar";
+    }
+    .header{
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-direction: row;
+  flex-wrap: nowrap;
+
+    }
+    .profile-section{
+       flex: 0 0 60%;
+    }
+}

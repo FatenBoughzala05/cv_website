@@ -371,3 +371,13 @@ body {
         grid-template-columns: 1fr; /* Single column for skills */
     }
 }
+@media print {
+    body{
+        font-size: 0.68em;
+    }
+.cv-container {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap:20px
+}
+}

@@ -248,8 +248,14 @@ ul li a {
     }
 }
 @media print {
-    @page {
-        size: a4;
-        margin: 0;
-    }
+    header .contact-info {
+     font-size: 0.45em;
+     flex-wrap: nowrap;
+     justify-content: space-between;
+     flex-direction: row;
+     display:flex
+}
+body{
+    font-size: 0.65em;
+}
 }
