@@ -80,7 +80,10 @@ jobs:
         docker build -t ${{ secrets.DOCKER_USERNAME }}/cv-app:latest .
         docker push ${{ secrets.DOCKER_USERNAME }}/cv-app:latest
 
-    - name: Deploy to staging
+    - name: Install cairo dependencies
       run: |
         # Add deployment commands here, e.g., using docker-compose or Kubernetes
         echo "Deploying to staging environment"
+    - name: Deploy to staging
+      run: |
+        sudo apt-get update && sudo apt-get install -y libcairo2-dev pkg-config
