@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from cv_app.admin import custom_admin_site
+from django_prometheus import exports
 
 urlpatterns = [
     path('admin/', custom_admin_site.urls),
     path('', include('cv_app.urls')), # Link to your app's URLs
+    path('metrics/', exports.ExportToDjangoView, name='prometheus-django-metrics'),
 ]
