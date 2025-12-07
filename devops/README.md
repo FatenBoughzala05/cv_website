@@ -48,6 +48,10 @@ This document outlines a comprehensive DevOps strategy for the CV app covering C
 - Use Kubernetes or managed container services for orchestration.
 - Use secrets management for sensitive data.
 
+### Current Deployments
+
+- **Render**: https://cv-rec3.onrender.com
+
 ---
 
 ## Next Steps
