@@ -68,7 +68,7 @@
     text-decoration: none;
 }
 .contact-info p {
-  margin-right: 16px;  
+  margin-right: 20px;  
   margin-left: 0px;
   margin-top: 0px;
   margin-bottom: 0px;          /* kills default paragraph spacing */
@@ -182,7 +182,7 @@ ul li {
     font-weight: bold;
 }
 @media print {
-    
+
 .contact-info {
     font-size: 0.6em;
     margin-top: 8px;
