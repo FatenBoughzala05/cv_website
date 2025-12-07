@@ -68,7 +68,10 @@
     text-decoration: none;
 }
 .contact-info p {
-  margin: 0;            /* kills default paragraph spacing */
+  margin-right: 12px;  
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;          /* kills default paragraph spacing */
 }
 .content {
     display: flex;
