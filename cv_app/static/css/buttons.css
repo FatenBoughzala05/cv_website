@@ -277,6 +277,11 @@ nav {
 @page {
       size: A4 portrait;
 }
+/* Force background graphics to print */
+*{
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
 nav,
 .download-btn {
     display: none;
